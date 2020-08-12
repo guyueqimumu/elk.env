@@ -1,0 +1,12 @@
+filebeat.inputs:
+- type: log
+  enabled: true
+  paths:
+    - /data/*/*.log
+#output.elasticsearch:
+#  hosts: ["es:9200"]
+setup.kibana:
+  host: "kibana:5601"
+setup.dashboards.index: "httpd-%{[agent.version]}-%{+yyyy.MM.dd}"
+setup.template.name: "httpd"
+setup.template.pattern: "httpd-*"

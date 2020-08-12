@@ -1,0 +1,41 @@
+#
+cmd=${1:-install}
+array=("install" "uninstall" "clean");
+
+if ! echo "${array[@]}" | grep -w "$cmd" &>/dev/null; then
+    echo "
+Usage:
+  run [command] default install
+Available Commands:
+  install      Installing the elk environment
+  clean    clean elk data
+";
+else
+
+#read
+
+if [[ $cmd = "install" ]]
+then
+		# 因为容器运行的用户不是root用户，这里为了方便直接修改挂载的宿主机文件权限
+                chmod -R a+=rwx ./fluentd/data
+                docker-compose -f ./elk.yml up -d
+
+fi
+
+
+
+
+
+if [[ $cmd == "clean" ]]
+then
+  
+   # docker stop $(docker ps -qa) && docker rm -f $(docker ps -qa)
+   rm -rf ./es/data/*  ./es/logs/* ./fluentd/data/*
+   echo  > ./test/json.log
+fi
+
+
+
+fi
+
+

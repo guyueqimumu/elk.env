@@ -1,0 +1,13 @@
+#
+#
+#xpack配置参考:https://www.elastic.co/guide/en/kibana/7.9/security-settings-kb.html
+#kibana配置参考:https://www.elastic.co/guide/en/kibana/7.9/settings.html
+#
+server.name: kibana
+server.host: "0.0.0.0"
+elasticsearch.hosts: [ "http://es:9200" ]
+i18n.locale: zh-CN
+#elasticsearch.username: "kibana_system"
+#elasticsearch.password: "root123456"
+xpack.security.encryptionKey: "8884aea3bdfb65e3083a9280f4758086"
+
